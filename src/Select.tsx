@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import styles from './Select.module.css'
 
 type SelectItemProps = {
@@ -15,16 +15,31 @@ type SelectProps = {
 
 export const Select = ({value, onChange, items}: SelectProps) => {
 
-    const [active, setActive] = useState<boolean>(false)
+    type ActionProps = {
+        type: string
+    }
+
+    const reducer = (state: boolean, action:ActionProps) => {
+        if (action.type === 'TOGGLE_ITEMS') {
+            return !state 
+        }
+        return false
+    }
+
+    //const [active, setActive] = useState<boolean>(false)
+    const [active, dispatch] = useReducer(reducer, false)
+
+
     const selectedItem = items.find(i => i.value === value)
 
     const toggleItems = () => {
-        setActive(!active)
+        //setActive(!active)
+        dispatch({ type: 'TOGGLE_ITEMS'})
     }
     
     const clickedItemHandler = (value: string) => {
         onChange(value)
-        setActive(false)
+        dispatch({ type:''})
     }
 
     
