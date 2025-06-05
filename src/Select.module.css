@@ -1,0 +1,24 @@
+.selectsSector{
+    border: 3px purple solid;
+}
+
+.selectSector {
+    border: 2px rgb(0, 119, 128) solid;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.title {
+    color:crimson;
+}
+
+.selectValue {
+    border: 1px solid black;
+}
+
+.selectItemsSection {
+    border: 1px solid black;
+}
