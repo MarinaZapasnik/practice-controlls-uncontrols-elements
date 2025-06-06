@@ -1,4 +1,5 @@
-import { useReducer, useState } from 'react'
+import { useReducer } from 'react'
+//import { useState } from 'react'
 import styles from './Select.module.css'
 
 type SelectItemProps = {
@@ -13,14 +14,17 @@ type SelectProps = {
     items: SelectItemProps[]
 }
 
-export const Select = ({value, onChange, items}: SelectProps) => {
-
-    type ActionProps = {
+type ActionProps = {
         type: string
     }
 
+const TOGGLE_CONSTANT = 'TOGGLE_ITEMS'
+
+export const Select = ({value, onChange, items}: SelectProps) => {
+
+    
     const reducer = (state: boolean, action:ActionProps) => {
-        if (action.type === 'TOGGLE_ITEMS') {
+        if (action.type === TOGGLE_CONSTANT) {
             return !state 
         }
         return false
@@ -34,11 +38,12 @@ export const Select = ({value, onChange, items}: SelectProps) => {
 
     const toggleItems = () => {
         //setActive(!active)
-        dispatch({ type: 'TOGGLE_ITEMS'})
+        dispatch({ type: TOGGLE_CONSTANT})
     }
     
     const clickedItemHandler = (value: string) => {
         onChange(value)
+        //setActive(false)
         dispatch({ type:''})
     }
 
